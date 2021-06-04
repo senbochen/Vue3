@@ -22,5 +22,7 @@ module.exports = {
     'arrow-parens': ['error', 'always'],
     'vue/html-closing-bracket-newline': 'off',
     'no-tabs': 'off',
+    'no-console': 'off',
+    'vue/no-v-model-argument': 'off',
   },
 }
