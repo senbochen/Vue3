@@ -1,11 +1,12 @@
 <template>
   <div>
-    <Switch v-model:value="bool" />
+    <Switch v-model:value="bool" @click="open" />
   </div>
 </template>
 
 <script lang='ts'>
 import { ref } from 'vue'
+import Axios from '../api/index'
 import Switch from '../librany/Switch/index.vue'
 
 export default {
@@ -13,7 +14,11 @@ export default {
   setup() {
     const bool = ref(false)
     const open = () => {
-      console.log('212', 21)
+      Axios.request({
+        url: 'https://bbs.hiwonder.com/api/bbs/v1.post/getBanner?type=index',
+        data: {},
+        method: 'GET',
+      })
     }
     return { bool, open }
   },
