@@ -1,12 +1,12 @@
 <template>
   <div>
-    <Switch v-model:value="bool" @click="open" />
+    <Switch v-model:value="bool" @click="open" :disabled="true" />
   </div>
 </template>
 
 <script lang='ts'>
 import { ref } from 'vue'
-import Axios from '../api/index'
+import { Axios } from '@/api/index'
 import Switch from '../librany/Switch/index.vue'
 
 export default {

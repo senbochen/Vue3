@@ -1,5 +1,5 @@
 /* eslint-disable no-param-reassign */
-import axios from 'axios'
+import axios, { AxiosRequestConfig } from 'axios'
 
 const Axios = axios.create({
   baseURL: '',
@@ -7,13 +7,13 @@ const Axios = axios.create({
 })
 
 const pendingRequest = new Map()
-const createRequestKey = (config) => {
+const createRequestKey = (config: AxiosRequestConfig) => {
   const {
     method, url, params, data,
   } = config
   return [method, url, JSON.stringify(params), JSON.stringify(data)].join('&')
 }
-const removeRequest = (config) => {
+const removeRequest = (config: AxiosRequestConfig) => {
   const requestKey = createRequestKey(config)
   if (pendingRequest.has(requestKey)) {
     const cancel = pendingRequest.get(requestKey)
@@ -22,7 +22,7 @@ const removeRequest = (config) => {
   }
 }
 
-const addPendingRequest = (config) => {
+const addPendingRequest = (config: AxiosRequestConfig) => {
   const requestKey = createRequestKey(config)
   config.cancelToken = config.cancelToken || new axios.CancelToken((cancel) => {
     if (!pendingRequest.has(requestKey)) {
@@ -53,4 +53,5 @@ Axios.interceptors.response.use(
     return Promise.reject(error)
   },
 )
-export default Axios
+
+export { Axios }

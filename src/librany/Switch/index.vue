@@ -63,12 +63,12 @@ $height2: 1.3rem;
     transition: 0.3s all ease;
     span {
       transition: 0.3s all ease;
-      left: calc(100% - #{$height2} - 0.1rem);
+      left: calc(100% - $height2 - 0.1rem);
     }
     &:active {
       span {
         width: $height2 + 0.6rem;
-        left: calc(100% - #{$height2} - 0.7rem);
+        left: calc(100% - $height2 - 0.7rem);
       }
     }
   }
